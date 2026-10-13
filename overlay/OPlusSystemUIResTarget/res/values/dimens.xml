@@ -4,8 +4,22 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
+    <!-- Top padding of the status bar content: the bar is the cutout height (141px) but the
+         content stays centered on the camera hole (y=82px): (141 + 23) / 2 -->
+    <dimen name="status_bar_padding_top">23px</dimen>
+
+    <!-- Lock screen: the header is 23px shorter than before (141px instead of 164px), so push
+         the clock down by the same amount to keep it where it was: 16dp (56px) + 23px -->
+    <dimen name="keyguard_clock_top_margin">79px</dimen>
+
     <!-- the padding on the start of the statusbar -->
-    <dimen name="status_bar_padding_start">16dp</dimen>
+    <dimen name="status_bar_padding_start">0dp</dimen>
+
+    <!-- the padding on the end of the statusbar -->
+    <dimen name="status_bar_padding_end">0dp</dimen>
+
+    <!-- Margin on the left side of the carrier text on Keyguard -->
+    <dimen name="keyguard_carrier_text_margin">@dimen/status_bar_padding_start</dimen>
 
     <!-- Location on the screen of the center of the physical power button. This is a reasonable
     default that should be overridden by device-specific overlays. -->
