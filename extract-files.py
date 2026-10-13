@@ -1,6 +1,6 @@
-#!/usr/bin/env -S PYTHONPATH=../../../tools/extract-utils python3
+#!/usr/bin/env -S PYTHONPATH=../../../tools/extract-utils:../../../hardware/oplus/extract-utils-ext python3
 #
-# SPDX-FileCopyrightText: 2024 The LineageOS Project
+# SPDX-FileCopyrightText: The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 #
 
@@ -16,6 +16,9 @@ from extract_utils.main import (
     ExtractUtils,
     ExtractUtilsModule,
 )
+from extract_utils_oplus import (
+    add_generated_thermal_engine_config,
+)
 
 namespace_imports = [
     'hardware/oplus',
@@ -27,6 +30,7 @@ namespace_imports = [
 
 def lib_fixup_vendor_suffix(lib: str, partition: str, *args, **kwargs):
     return f'{lib}_{partition}' if partition == 'vendor' else None
+
 
 lib_fixups: lib_fixups_user_type = {
     **lib_fixups,
@@ -72,6 +76,12 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/vendor.qti.hardware.camera.offlinecamera-service-impl.so',
     ): blob_fixup()
         .replace_needed('android.hardware.graphics.allocator-V1-ndk.so', 'android.hardware.graphics.allocator-V2-ndk.so'),
+    (
+        'vendor/lib64/camera/components/com.qti.node.fd.so',
+        'vendor/lib64/hw/camera.qcom.core.so',
+        'vendor/lib64/libcamxdumpinforecorder.so',
+    ): blob_fixup()
+        .replace_needed('libtinyxml2.so', 'libtinyxml2-v36.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
@@ -82,6 +92,8 @@ module = ExtractUtilsModule(
     lib_fixups=lib_fixups,
     add_firmware_proprietary_file=True,
 )
+
+add_generated_thermal_engine_config(module)
 
 if __name__ == '__main__':
     utils = ExtractUtils.device_with_common(
