@@ -1,2 +1,13 @@
+# Key attestation
+ro.product.device_for_attestation=OP6117L1
+ro.product.model_for_attestation=PLR110
+ro.product.name_for_attestation=PLR110
+
 # Radio
 ro.vendor.oplus.regionmark=CN
+
+# Sensors
+ro.vendor.oplus.sensor.brl_receive=true
+ro.vendor.oplus.sensor.high_pwm_rgb=true
+ro.vendor.oplus.sensor.lb_algo=true
+ro.vendor.oplus.sensor.use_black_mode=true
