@@ -12,6 +12,10 @@
          the clock down by the same amount to keep it where it was: 16dp (56px) + 23px -->
     <dimen name="keyguard_clock_top_margin">79px</dimen>
 
+    <!-- Shade header (clock, date, system icons while the shade is pulled down): the row is
+         centred like the collapsed status bar, whose content is centred on the camera hole at
+         y=82px: 164px / 2 -->
+    <dimen name="large_screen_shade_header_min_height">164px</dimen>
     <!-- the padding on the start of the statusbar -->
     <dimen name="status_bar_padding_start">0dp</dimen>
 
