@@ -25,6 +25,10 @@ odm/lib/rfsa/adsp/libtfadsp_sb5_5_tx.so
 odm/lib/rfsa/adsp/nlc_bgth_v1_5.so
 
 # ANT+ firmware
+# Haptics (aw8697 RAM waveforms, loaded by the haptic driver)
+odm/firmware/aw8697_haptic.bin
+odm/firmware/aw8697_haptic_170.bin
+odm/firmware/aw8697_haptic_170_soft.bin
 odm/firmware/secure_ta/antdtx.b00
 odm/firmware/secure_ta/antdtx.b01
 odm/firmware/secure_ta/antdtx.b02
